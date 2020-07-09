@@ -3,13 +3,12 @@ kind: Service
 metadata:
   name: wordpress
   labels:
-    app: ft_services
+    app: wordpress
 spec:
   ports:
     - port: 80
   selector:
-    app: ft_services
-    tier: wordpress
+    app: wordpress
   type: LoadBalancer
 ---
 apiVersion: v1
@@ -17,7 +16,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: wp-pv-claim
   labels:
-    app: ft_services
+    app: wordpress
 spec:
   accessModes:
     - ReadWriteOnce
@@ -30,19 +29,17 @@ kind: Deployment
 metadata:
   name: wordpress
   labels:
-    app: ft_services
+    app: wordpress
 spec:
   selector:
     matchLabels:
-      app: ft_services
-      tier: wordpress
+      app: wordpress
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: ft_services
-        tier: wordpress
+        app: wordpress
     spec:
       containers:
       - image: my_wordpress
