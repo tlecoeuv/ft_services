@@ -7,7 +7,6 @@ secretGenerator:
   - password=password
 
 resources:
-  - metallb-config.yaml
   - nginx.yaml
   - mysql.yaml
   - wordpress.yaml

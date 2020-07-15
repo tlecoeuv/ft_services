@@ -34,6 +34,9 @@ https://wiki.alpinelinux.org/wiki/WordPress
 https://medium.com/@containerum/how-to-deploy-wordpress-and-mysql-on-kubernetes-bda9a3fdd2d5
 https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/
 
+wp-config.php:
+https://wordpress.org/support/article/editing-wp-config-php/
+
 Mysql on alpine:
 https://wiki.alpinelinux.org/wiki/MariaDB
 https://www.quennec.fr/trucs-astuces/applications/mysql/se-connecter-%C3%A0-un-serveur-mysql-%C3%A0-partir-de-nimporte-quel-host
@@ -50,6 +53,8 @@ https://stackoverflow.com/questions/45720084/how-to-make-two-kubernetes-services
 
 Pourquoi --no-cache et rm var/cache/apk/*:
 https://stackoverflow.com/questions/49118579/alpine-dockerfile-advantages-of-no-cache-vs-rm-var-cache-apk
+
+https://medium.com/@shoaib_masood/metallb-network-loadbalancer-minikube-335d846dfdbe
 
 
 Correction sur la VM:
