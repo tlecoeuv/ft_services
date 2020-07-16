@@ -9,6 +9,7 @@ spec:
     - port: 80
   selector:
     app: wordpress
+    tier: frontend
   type: LoadBalancer
 ---
 apiVersion: v1
@@ -34,12 +35,14 @@ spec:
   selector:
     matchLabels:
       app: wordpress
+      tier: frontend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: wordpress
+        tier: frontend
     spec:
       containers:
       - image: my_wordpress

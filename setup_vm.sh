@@ -9,3 +9,4 @@ docker build -t my_wordpress srcs/containers/wordpress
 docker build -t my_phpmyadmin srcs/containers/phpmyadmin
 
 kubectl apply -k ./srcs/deployment
+kubectl exec -i $(kubectl get pods | grep mysql | cut -d" " -f1) -- mysql -u root -e 'CREATE DATABASE wordpress;'
