@@ -18,6 +18,8 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-
 
 Comprendre les conf nginx:
 tps://www.codeflow.site/fr/article/understanding-the-nginx-configuration-file-structure-and-configuration-contexts
+redirection http vers https type 301:
+https://korben.info/nginx-rediriger-http-https.html
 
 Volumes:
 https://kubernetes.io/fr/docs/concepts/storage/volumes/
