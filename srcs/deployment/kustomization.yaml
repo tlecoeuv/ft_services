@@ -12,3 +12,6 @@ resources:
   - mysql.yaml
   - wordpress.yaml
   - phpmyadmin.yaml
+  - influxdb.yaml
+  - telegraf.yaml
+  - grafana.yaml

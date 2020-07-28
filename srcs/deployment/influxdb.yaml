@@ -4,7 +4,7 @@ metadata:
   name: influxdb
 spec:
   ports:
-    - port: 3306
+    - port: 8006
   selector:
     app: influxdb
   clusterIP: None
