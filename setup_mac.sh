@@ -1,4 +1,6 @@
 eval $(minikube docker-env)
+
+MINIKUBE_IP="$(kubectl get node -o=custom-columns='DATA:status.addresses[0].address' | sed -n 2p)"
 kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.8.1/manifests/metallb.yaml
 
 docker build -t my_nginx srcs/containers/nginx

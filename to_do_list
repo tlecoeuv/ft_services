@@ -1,0 +1,15 @@
+-nginx: gerer ssl, https et ssh.
+
+-wordpress, mysql, phpmyadmin: mettre les bons ports.
+
+-wordpress: rajouter des utilisateurs.
+
+DONE!! -tester que ftps fonctionne bien.
+
+-Grafana: faire les tableau et les recup pour les avoir sur fichiers projets.
+
+-Faire un setup.sh bien propre.(remplacer les minikube ip de telegraf et ftps).
+
+-tester les redemarrage des containers.
+
+-Idealement avoir des photos de la correction et tout tcheker.
