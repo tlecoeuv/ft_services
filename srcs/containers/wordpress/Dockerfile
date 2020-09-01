@@ -2,29 +2,19 @@ FROM alpine
 
 MAINTAINER tlecoeuv@student.42.fr
 
-RUN apk update
-RUN apk add lighttpd
-RUN apk add php7 php7-openssl php7-cgi php7-xml php7-pdo php7-mcrypt php7-session php7-mysqli php7-zlib php7-json --no-cache
+RUN apk update && apk add wget && mkdir /www \
+&& apk add php7 php7-fpm php7-opcache php7-gd php7-mysqli php7-zlib php7-curl php7-mbstring php7-json php7-session
 
-COPY srcs/wp-config.php /var/www/localhost/htdocs/wp-config.php
-ADD https://fr.wordpress.org/latest-fr_FR.tar.gz /tmp/
+RUN wget https://wordpress.org/latest.tar.gz \
+&& tar -xvf latest.tar.gz \
+&& mv wordpress/* /www \
+&& rm -rf /var/cache/apk/*
 
+COPY srcs/wp-config.php /www/wp-config.php
+COPY srcs/setup.sh .
 
-RUN tar -xf /tmp/latest-fr_FR.tar.gz --strip-components=1 -C /var/www/localhost/htdocs
-RUN rm -f /tmp/latest-fr_FR.tar.gz
+RUN chmod +x setup.sh
 
-RUN mkdir -p /var/www/localhost/htdocs/tmp
-RUN chmod 755 /var/www/localhost/htdocs/tmp
-RUN chmod 755 -R /var/www/localhost/htdocs/*
+EXPOSE 5050
 
-RUN mkdir -p /var/run/lighttpd
-RUN touch /var/run/lighttpd/php-fastcgi.socket
-RUN chown -R lighttpd:lighttpd /var/run/lighttpd
-
-RUN sed -i 's/\/run\/lighttpd.pid/\/run\/lighttpd\/php-fast-cgi.socket/g' /etc/lighttpd/lighttpd.conf
-RUN sed -i 's/#   include "mod_fastcgi.conf"/include "mod_fastcgi.conf"/g' /etc/lighttpd/lighttpd.conf
-RUN sed -i 's/\/usr\/bin\/php-cgi/\/usr\/bin\/php-cgi7/g' /etc/lighttpd/mod_fastcgi.conf
-
-EXPOSE 80
-
-ENTRYPOINT lighttpd -D -f /etc/lighttpd/lighttpd.conf
+CMD ./setup.sh

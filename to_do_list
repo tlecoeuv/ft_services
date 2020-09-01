@@ -1,6 +1,6 @@
 -nginx: gerer ssl, https et ssh.
 
--wordpress, mysql, phpmyadmin: mettre les bons ports.
+DONE!! -wordpress, mysql, phpmyadmin: mettre les bons ports.
 
 -wordpress: rajouter des utilisateurs.
 

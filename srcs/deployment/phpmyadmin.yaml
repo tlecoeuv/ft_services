@@ -7,7 +7,7 @@ metadata:
 spec:
   ports:
     - name: http
-      port: 80
+      port: 5000
   selector:
     app: phpmyadmin
   type: LoadBalancer
@@ -33,5 +33,4 @@ spec:
           image: my_phpmyadmin
           imagePullPolicy: Never
           ports:
-            - containerPort: 80
-              hostPort: 5000
+            - containerPort: 5000
