@@ -13,3 +13,4 @@ docker build -t my_grafana srcs/containers/grafana
 
 kubectl apply -k ./srcs/deployment
 kubectl exec -i $(kubectl get pods | grep mysql | cut -d" " -f1) -- mysql -u root -e 'CREATE DATABASE wordpress;'
+ kubectl exec -i $(kubectl get pods | grep mysql | cut -d" " -f1) -- mysql wordpress -u root < "srcs/containers/wordpress/srcs/wordpress.sql"
