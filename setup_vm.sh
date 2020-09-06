@@ -36,7 +36,12 @@ docker build -t my_ftps srcs/containers/ftps
 
 kubectl apply -k ./srcs/deployment
 
-sleep 10 #wait 10 sec.
+sleep 12 #wait 12 sec.
 
 kubectl exec -i $(kubectl get pods | grep mysql | cut -d" " -f1) -- mysql -u root -e 'CREATE DATABASE wordpress;'
 kubectl exec -i $(kubectl get pods | grep mysql | cut -d" " -f1) -- mysql wordpress -u root < "srcs/containers/wordpress/srcs/wordpress.sql"
+
+rm -f srcs/containers/wordpress/srcs/wordpress.sql
+rm -f srcs/deployment/metallb-config.yaml
+rm -f srcs/containers/telegraf/srcs/telegraf.conf
+rm -f srcs/containers/ftps/srcs/start.sh

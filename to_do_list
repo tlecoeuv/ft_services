@@ -1,12 +1,12 @@
--nginx: gerer ssl, https et ssh.
+DONE !!-nginx: gerer ssl, https et ssh.
 
 DONE!! -wordpress, mysql, phpmyadmin: mettre les bons ports.
 
--wordpress: rajouter des utilisateurs.
+DONE !!-wordpress: rajouter des utilisateurs.
 
 DONE!! -tester que ftps fonctionne bien.
 
--Grafana: faire les tableau et les recup pour les avoir sur fichiers projets.
+DONE!! Grafana: faire les tableau et les recup pour les avoir sur fichiers projets.
 
 -Faire un setup.sh bien propre.(remplacer les minikube ip de telegraf et ftps).
 
