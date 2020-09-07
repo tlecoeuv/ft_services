@@ -12,7 +12,7 @@ COPY srcs/start.sh /bin/start.sh
 COPY srcs/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
 EXPOSE 21
-EXPOSE 21021
+EXPOSE 21000-21010
 VOLUME /ftp/ftp
 
 RUN chmod 775 /bin/start.sh

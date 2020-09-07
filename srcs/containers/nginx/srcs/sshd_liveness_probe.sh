@@ -1,0 +1,6 @@
+if pgrep "/usr/sbin/sshd" > /dev/null
+then
+	exit 0
+else
+	exit 1
+fi

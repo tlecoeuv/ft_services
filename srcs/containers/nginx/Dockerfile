@@ -10,7 +10,9 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private
 
 RUN apk add openssh
 RUN usr/bin/ssh-keygen -A
-COPY	./srcs/sshd_config /etc/ssh/
+COPY ./srcs/sshd_config /etc/ssh/
+COPY ./srcs/sshd_liveness_probe.sh .
+RUN chmod +x /sshd_liveness_probe.sh
 
 COPY ./srcs/nginx.conf /etc/nginx/nginx.conf
 
