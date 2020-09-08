@@ -2,6 +2,7 @@ FROM alpine:latest
 
 RUN apk update
 RUN apk add nginx
+RUN apk add bash
 RUN mkdir -p /run/nginx
 COPY ./srcs/certificate .
 
