@@ -5,7 +5,10 @@ WORDPRESS_IP=172.17.0.7
 METALLB_IP_RANGE=172.17.0.3-172.17.0.13
 FTPS_IP=172.17.0.3
 
-
+rm -f srcs/containers/wordpress/srcs/wordpress.sql
+rm -f srcs/deployment/metallb-config.yaml
+rm -f srcs/containers/telegraf/srcs/telegraf.conf
+rm -f srcs/containers/ftps/srcs/start.sh
 
 cp srcs/containers/wordpress/srcs/wordpress_model.sql srcs/containers/wordpress/srcs/wordpress.sql
 sed -i "s/WORDPRESS_IP/$WORDPRESS_IP/g" srcs/containers/wordpress/srcs/wordpress.sql
@@ -36,12 +39,25 @@ docker build -t my_ftps srcs/containers/ftps
 
 kubectl apply -k ./srcs/deployment
 
-sleep 12 #wait 12 sec.
+sleep 20 #wait 20 sec.
 
 kubectl exec -i $(kubectl get pods | grep mysql | cut -d" " -f1) -- mysql -u root -e 'CREATE DATABASE wordpress;'
 kubectl exec -i $(kubectl get pods | grep mysql | cut -d" " -f1) -- mysql wordpress -u root < "srcs/containers/wordpress/srcs/wordpress.sql"
+echo "finish!\n"
+#TO TEST FTPS.
+#echo "user42" | sudo -S apt install -y filezilla
+#account ftps_user, password.
 
-rm -f srcs/containers/wordpress/srcs/wordpress.sql
-rm -f srcs/deployment/metallb-config.yaml
-rm -f srcs/containers/telegraf/srcs/telegraf.conf
-rm -f srcs/containers/ftps/srcs/start.sh
+#TO TEST SSH
+#ssh admin@172.17.0.5 -p 22
+#account admin, admin.
+
+#GRAFANA account: admin, admin.
+
+#WORDPRESS: account tlecoeuv, password.
+
+#PHPMYADMIN: account root, password.
+
+#TO TEST PERSISTENT DATABASES
+#kubectl exec -it $(kubectl get pods | grep mysql | cut -d" " -f1) -- /bin/sh -c "ps"
+#kubectl exec -it $(kubectl get pods | grep mysql | cut -d" " -f1) -- /bin/sh -c "kill 1"
